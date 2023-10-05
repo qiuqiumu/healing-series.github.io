@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动切换页面</title>
+    <link rel="stylesheet" href="登录和注册页面切换.css">
+</head>
+<body>
+<div class="container">
+        
+        <div class="form ">
+            <div class="register">
+                 <h1>Register</h1>
+                 <input type="text" placeholder="手机号或邮箱" id="tele">
+                 <input type="text" placeholder="用户名" id="use">
+                 <input type="password" placeholder="密码"id="password" >
+                 <input type="password" placeholder="确认密码"id="password2">
+                 <button id="submit">注册</button>
+            </div>
+           <div class="login hidden">
+                 <h1>Login</h1>
+                 <input type="text" placeholder="手机号或邮箱" id="tele1">
+                 <input type="text" placeholder="用户名" id="use1">
+                 <input type="password" placeholder="密码" id="password1">
+                 <button id="check"><a>登录</a></button>
+            </div> 
+        </div>
+            <div class="back right">
+                 <h2>欢迎来到<span>治愈小屋</span></h2>
+                 <p>我在人间贩卖美好风景</p>
+                 <em><a href="index2.html" target="_parent"><img src="images/QQ图片20230315172650.jpg" width="150px" height="200px"></a></em>
+                 <a>已有帐号?</a>
+                 <button id="login1">去登录</button>
+            </div>
+            <div class="back left">
+                <h2>欢迎来到<span>治愈小屋</span></h2>
+                <p>我在人间贩卖美好风景</p>
+                <em><a href="index2.html" target="_parent"><img src="images/QQ图片20230315172650.jpg" width="150px" height="200px"></a></em>
+                <a>没有帐号?</a>
+                <button id="register1">去注册</button>
+        
+    </div>
+    <script>
+        var login1=document.getElementById('login1');
+        var register1=document.getElementById('register1');
+        var form = document.querySelector('.form');
+        var login=document.querySelector('.login');
+        var register = document.querySelector('.register');
+        var tele=document.getElementById('tele');
+        var tele1=document.getElementById('tele1');
+        var password=document.getElementById('password');
+        var password1=document.getElementById('password1');
+        var password2=document.getElementById('password2');
+        var use=document.getElementById('use');
+        var use1=document.getElementById('use1');
+        var submit=document.getElementById('submit');
+        var check=document.getElementById('check');
+        var a=document.querySelector('a');
+        submit.addEventListener('click',function(){
+             if(use.value.trim()==""){
+                 alert('请输入用户名');
+             }
+             else if(tele.value.trim()==''){
+                alert('请输入手机号或邮箱');
+             }
+             else if(password.value.trim().length<6){
+                alert('密码长度不能少于6位数');
+             }
+             else if(password2.value.trim()!=password.value.trim()){
+                alert('两次密码不一致');
+            }
+            else(alert('注册成功，请去登录'))
+             
+        })
+    
+        check.addEventListener('click',function(){
+            if(use1.value.trim()==''){
+                alert('请输入用户名');
+                a.preventDefault();
+            }
+            if(tele1.value.trim()==''){
+                alert('请输入电话号码或邮箱');
+                a.preventDefault();
+             }
+            if(use.value.trim()!==use1.value.trim()){
+                 alert('该用户名不存在');
+                 a.preventDefault();
+             }
+            if(tele.value.trim()!==tele1.value.trim()||password.value.trim()!==password1.value.trim()){
+                alert('账号或密码错误');
+                a.preventDefault();
+            }
+            else(location.assign('index3.html'))
+            })
+
+        login1.addEventListener('click',function(){
+            form.style.transform= 'translateX(90%)';
+            register.classList.add('hidden');
+            login.classList.remove('hidden');
+            form.style.backgroundColor='#a39fdb';
+            register1.style.color='#a6bce8';
+        })
+        register1.addEventListener('click',function(){
+            form.style.transform= 'translateX(0%)';
+            login.classList.add('hidden');
+            register.classList.remove('hidden');
+            form.style.backgroundColor='#859ed0';
+        })
+    </script>
+</body>
+</html>
